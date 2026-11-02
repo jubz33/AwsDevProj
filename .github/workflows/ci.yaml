@@ -13,4 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup DockerImage
-        run: docker build -t portfolio-image:v1 .
+        run: docker build -t portfolio-image:v2 .
+
+      - name: Run Container
+        run: docker run --name test1 -d -p 8080:80 portfolio-image:v2
