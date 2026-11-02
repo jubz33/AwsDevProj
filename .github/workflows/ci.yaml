@@ -17,3 +17,11 @@ jobs:
 
       - name: Run Container
         run: docker run --name test1 -d -p 8080:80 portfolio-image:v2
+
+      - name: Test Container 
+        run: curl -f --retry 5 --retry-delay 2 --retry-connrefused http://localhost:8080 
+        # test running container
+        # -f - fail silently (no output at all) on server errors
+        # --retry 5 - retry 5 times before giving up
+        # --retry-delay 2 - wait 2 seconds between retries
+        # --retry-connrefused - retry even if connection is refused
