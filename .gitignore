@@ -1,0 +1,31 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan
+.terraform.tfstate.lock.info
+crash.log
+crash.*.log
+
+# AWS credentials and private keys
+.aws/
+*.pem
+*.key
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Kubernetes secrets
+secret.yaml
+secret.yml
+*-secret.yaml
+*-secret.yml
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
