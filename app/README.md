@@ -3,5 +3,6 @@
 An end-to-end DevOps project using AWS, Terraform, Docker,
 GitHub Actions, and Kubernetes.
 
-## Status
+
+## Project Status
 🚧 Under Development
