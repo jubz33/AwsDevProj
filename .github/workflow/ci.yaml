@@ -9,3 +9,8 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup DockerImage
+        run: docker build -t portfolio-image:v1 .
