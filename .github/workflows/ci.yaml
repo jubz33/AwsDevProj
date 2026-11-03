@@ -30,3 +30,10 @@ jobs:
         # --retry 5 - retry 5 times before giving up
         # --retry-delay 2 - wait 2 seconds between retries
         # --retry-connrefused - retry even if connection is refused
+
+      - name: Login GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
