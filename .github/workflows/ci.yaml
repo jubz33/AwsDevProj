@@ -38,8 +38,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Tag Image
-        run: docker tag portfolio-image:v2 ghcr.io/${{ github.repository_owner }}/portfolio-image:v2
-
       - name: Push Image
         run: docker push ghcr.io/${{ github.repository_owner }}/portfolio-image:v2
