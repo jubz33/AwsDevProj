@@ -40,3 +40,9 @@ jobs:
 
       - name: Push Image
         run: docker push ghcr.io/${{ github.repository_owner }}/portfolio-image:v2
+
+      - name: Diagnose Container
+        run: |
+          docker ps -a
+          docker logs test1
+          docker inspect test1 --format '{{.State.Status}}'
