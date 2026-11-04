@@ -21,3 +21,7 @@ resource "aws_route_table" "pf_public_rt" {
 
 }
 
+resource "aws_route_table_association" "pf_public_rta" {
+  subnet_id      = aws_subnet.pf_public_subnet.id
+  route_table_id = aws_route_table.pf_public_rt.id
+}
