@@ -6,7 +6,7 @@ data "aws_ssm_parameter" "pf_amazon_linux" {
 resource "aws_instance" "pf_web_server" {
 
   ami = data.aws_ssm_parameter.pf_amazon_linux.value
-  
+
   iam_instance_profile = aws_iam_instance_profile.pf_ec2_profile.name
 
   instance_type = "t3.micro"
