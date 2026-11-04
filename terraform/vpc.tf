@@ -1,5 +1,5 @@
 #virtual private cloud
-resource "aws_vpc" "portfolio_vpc" {
+resource "aws_vpc" "pf_vpc" {
 
   cidr_block = "10.0.0.0/16"
 
@@ -7,7 +7,7 @@ resource "aws_vpc" "portfolio_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "devops-portfolio-vpc"
+    Name = "devops-pf-vpc"
   }
 
 }
