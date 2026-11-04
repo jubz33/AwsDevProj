@@ -12,6 +12,6 @@ resource "aws_vpc_security_group_ingress_rule" "pf_http_ingress" {
   ip_protocol       = "tcp"
   from_port         = 80
   to_port           = 80
-  cidr_ipv4    = ["0.0.0.0/0"] 
+  cidr_ipv4    = "0.0.0.0/0" 
 
 }
