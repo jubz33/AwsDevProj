@@ -42,7 +42,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Image
-        run: docker push ghcr.io/jubz33/portfolio-image:${{ github.sha }}
+        run: |
+            docker push ghcr.io/jubz33/portfolio-image:${{ github.sha }}
+            docker tag ghcr.io/jubz33/portfolio-image:${{ github.sha }} ghcr.io/jubz33/portfolio-image:stable
+            docker push ghcr.io/jubz33/portfolio-image:stable
 
 #      - name: Diagnose Container
  #       run: |
