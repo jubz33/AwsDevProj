@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Personal DevOps and Cloud Engineering portfolio showcasing AWS, Terraform, Docker, Kubernetes, and CI/CD projects."
+      content="Ahmad Muhammad, an aspiring DevOps and Cloud Engineer based in Malaysia. Explore hands-on projects with AWS, Terraform, Docker, Kubernetes, and CI pipelines."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,13 +16,8 @@
       rel="stylesheet"
     />
 
-    <script
-      src="https://kit.fontawesome.com/fa62c117c7.js"
-      crossorigin="anonymous"
-    ></script>
-
     <link rel="stylesheet" href="styles.css" />
-    <title>YOUR_NAME | DevOps & Cloud Portfolio</title>
+    <title>Ahmad Muhammad | DevOps & Cloud Portfolio</title>
   </head>
 
   <body class="light" id="top">
@@ -32,8 +27,8 @@
         <a href="#top" class="link">DevOps.</a>
       </h3>
 
-      <nav class="nav center">
-        <ul class="nav__list center">
+      <nav class="nav center" aria-label="Main navigation">
+        <ul class="nav__list center" id="navigation">
           <li class="nav__list-item">
             <a class="link link--nav" href="#projects">Projects</a>
           </li>
@@ -47,18 +42,34 @@
 
         <button
           type="button"
-          aria-label="toggle theme"
-          class="btn btn--icon"
+          id="btn-theme"
+          aria-label="Switch to night mode"
+          class="btn btn--theme"
         >
-          <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+          <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3a9 9 0 1 0 10 10.1Z" />
+          </svg>
+          <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />
+          </svg>
+          <span class="theme__label">Night mode</span>
         </button>
 
         <button
           type="button"
-          aria-label="toggle navigation"
+          id="btn-navigation"
+          aria-label="Open navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
           class="btn btn--icon nav__hamburger"
         >
-          <i aria-hidden="true" class="fas fa-bars"></i>
+          <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m6 6 12 12M6 18 18 6" />
+          </svg>
         </button>
       </nav>
     </header>
@@ -67,55 +78,42 @@
       <!-- About -->
       <div class="about center">
         <h1>
-          Hi, I am
-          <span class="about__name">YOUR_NAME.</span>
+          Hi, I'm <span class="about__name">Ahmad Muhammad.</span>
         </h1>
 
         <h2 class="about__role">
-          Aspiring DevOps & Cloud Engineer.
+          Aspiring DevOps &amp; Cloud Engineer.
         </h2>
 
+        <p class="about__location">Based in Malaysia</p>
+
         <p class="about__desc">
-          I'm an aspiring DevOps and Cloud Engineer passionate
-          about cloud computing, infrastructure automation,
-          containerization, and continuous integration and
-          deployment.
-
-          I have hands-on experience working with AWS, Linux,
-          Terraform, Docker, Kubernetes, Git, and GitHub Actions.
-
-          I enjoy solving infrastructure challenges, building
-          cloud environments, and automating application
-          deployment through practical projects.
+          I'm passionate about cloud infrastructure, automation, and building
+          reliable systems. Through hands-on projects, I've gained practical
+          experience with AWS, Terraform, Docker, Kubernetes, Linux, and CI/CD
+          pipelines. I enjoy learning new technologies and applying them to
+          real-world infrastructure challenges.
         </p>
 
         <div class="about__contact center">
+          <!-- Remove hidden only after adding a real resume.pdf inside app/. -->
           <a
             href="resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            hidden
           >
             <span class="btn btn--outline">Resume</span>
           </a>
 
           <a
-            href="https://github.com/YOUR_GITHUB_USERNAME"
+            href="https://github.com/jubz33"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub profile"
-            class="link link--icon"
+            aria-label="Ahmad Muhammad on GitHub"
+            class="link"
           >
-            <i aria-hidden="true" class="fab fa-github"></i>
-          </a>
-
-          <a
-            href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn profile"
-            class="link link--icon"
-          >
-            <i aria-hidden="true" class="fab fa-linkedin"></i>
+            GitHub
           </a>
         </div>
       </div>
@@ -128,15 +126,70 @@
 
           <!-- Project 1 -->
           <div class="project">
-            <h3>AWS EC2 Multi-Website Hosting</h3>
+            <h3>AWS DevOps Portfolio Deployment</h3>
 
             <p class="project__description">
-              Deployed five static websites on a single
-              AWS EC2 instance using Nginx.
+              Built and deployed a containerized portfolio website on AWS EC2
+              using Terraform-managed infrastructure. Created a CI pipeline
+              with GitHub Actions to build, test, and publish Docker images to
+              GitHub Container Registry.
+            </p>
 
-              Configured Linux web directories, multiple
-              Nginx server blocks, custom listening ports,
-              and AWS Security Group rules.
+            <ul class="project__highlights" aria-label="Project highlights">
+              <li>Infrastructure as Code with Terraform</li>
+              <li>AWS VPC, subnet, Security Groups, and EC2</li>
+              <li>Docker containerization</li>
+              <li>Automated CI testing</li>
+              <li>SHA-based Docker image versioning</li>
+              <li>AWS Systems Manager administration</li>
+            </ul>
+
+            <ul class="project__stack">
+              <li class="project__stack-item">AWS EC2</li>
+              <li class="project__stack-item">Terraform</li>
+              <li class="project__stack-item">Docker</li>
+              <li class="project__stack-item">GitHub Actions</li>
+              <li class="project__stack-item">GHCR</li>
+              <li class="project__stack-item">Linux</li>
+              <li class="project__stack-item">Nginx</li>
+            </ul>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project">
+            <h3>Kubernetes Cluster Lab</h3>
+
+            <p class="project__description">
+              Created a local Kubernetes cluster with one control-plane node
+              and two worker nodes. Practiced deploying containerized
+              applications, managing replicas, configuring Services, and
+              defining resource limits.
+            </p>
+
+            <ul class="project__stack">
+              <li class="project__stack-item">Kubernetes</li>
+              <li class="project__stack-item">kind</li>
+              <li class="project__stack-item">Docker</li>
+              <li class="project__stack-item">kubectl</li>
+              <li class="project__stack-item">YAML</li>
+            </ul>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project">
+            <h3>Multi-Website Hosting on AWS EC2</h3>
+
+            <p class="project__description">
+              Configured an AWS EC2 instance to host five independent websites
+              using Nginx server blocks and multiple listening ports.
+            </p>
+
+            <p class="project__description">
+              Listening ports: <span class="project__port">80</span>,
+              <span class="project__port">8080</span>,
+              <span class="project__port">8081</span>,
+              <span class="project__port">9090</span>, and
+              <span class="project__port">9091</span>.
             </p>
 
             <ul class="project__stack">
@@ -147,97 +200,6 @@
             </ul>
           </div>
 
-          <!-- Project 2 -->
-          <div class="project">
-            <h3>Terraform AWS Infrastructure</h3>
-
-            <p class="project__description">
-              Developed Infrastructure as Code configurations
-              using Terraform to provision and manage AWS
-              resources, including VPCs, subnets, and S3.
-
-              Practiced variables, outputs, modules,
-              dependencies, lifecycle rules, and remote
-              state management.
-            </p>
-
-            <ul class="project__stack">
-              <li class="project__stack-item">Terraform</li>
-              <li class="project__stack-item">AWS</li>
-              <li class="project__stack-item">VPC</li>
-              <li class="project__stack-item">S3</li>
-            </ul>
-
-            <a
-              href="https://github.com/YOUR_GITHUB_USERNAME/AWS-Terraform-Lab"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Terraform project source code"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project">
-            <h3>Kubernetes Cluster Deployment</h3>
-
-            <p class="project__description">
-              Built a local Kubernetes environment using
-              kind and Docker Desktop.
-
-              Configured one control plane and two worker
-              nodes, deployed containerized applications,
-              managed replicas, and exposed applications
-              through Kubernetes Services.
-            </p>
-
-            <ul class="project__stack">
-              <li class="project__stack-item">Kubernetes</li>
-              <li class="project__stack-item">Docker</li>
-              <li class="project__stack-item">kind</li>
-              <li class="project__stack-item">kubectl</li>
-            </ul>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project">
-            <h3>AWS DevOps CI/CD Pipeline</h3>
-
-            <p class="project__description">
-              An end-to-end DevOps project to deploy this
-              personal portfolio using Docker, GitHub
-              Actions, Terraform, and AWS.
-
-              The project focuses on automated image builds,
-              infrastructure provisioning, and continuous
-              deployment.
-            </p>
-
-            <ul class="project__stack">
-              <li class="project__stack-item">AWS</li>
-              <li class="project__stack-item">Docker</li>
-              <li class="project__stack-item">GitHub Actions</li>
-              <li class="project__stack-item">Terraform</li>
-              <li class="project__stack-item">CI/CD</li>
-            </ul>
-
-            <p class="project__description">
-              Status: In Development
-            </p>
-
-            <a
-              href="https://github.com/YOUR_GITHUB_USERNAME/AwsDevProj"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="AWS DevOps project source code"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-          </div>
-
         </div>
       </section>
 
@@ -245,21 +207,68 @@
       <section class="section skills" id="skills">
         <h2 class="section__title">Technical Skills</h2>
 
-        <ul class="skills__list">
-          <li class="skills__list-item btn btn--plain">AWS</li>
-          <li class="skills__list-item btn btn--plain">Linux</li>
-          <li class="skills__list-item btn btn--plain">Docker</li>
-          <li class="skills__list-item btn btn--plain">Kubernetes</li>
-          <li class="skills__list-item btn btn--plain">Terraform</li>
-          <li class="skills__list-item btn btn--plain">Git</li>
-          <li class="skills__list-item btn btn--plain">GitHub</li>
-          <li class="skills__list-item btn btn--plain">GitHub Actions</li>
-          <li class="skills__list-item btn btn--plain">CI/CD</li>
-          <li class="skills__list-item btn btn--plain">Nginx</li>
-          <li class="skills__list-item btn btn--plain">Networking</li>
-          <li class="skills__list-item btn btn--plain">YAML</li>
-          <li class="skills__list-item btn btn--plain">PowerShell</li>
-        </ul>
+        <div class="skills__groups">
+          <div class="skills__group">
+            <h3>Cloud</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">AWS EC2</li>
+              <li class="skills__list-item btn btn--plain">VPC</li>
+              <li class="skills__list-item btn btn--plain">IAM</li>
+              <li class="skills__list-item btn btn--plain">S3</li>
+              <li class="skills__list-item btn btn--plain">Systems Manager</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Infrastructure as Code</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Terraform</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Containers</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Docker</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Orchestration</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Kubernetes</li>
+              <li class="skills__list-item btn btn--plain">kind</li>
+              <li class="skills__list-item btn btn--plain">kubectl</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>CI/CD</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">GitHub Actions</li>
+              <li class="skills__list-item btn btn--plain">GitHub Container Registry</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Version Control</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Git</li>
+              <li class="skills__list-item btn btn--plain">GitHub</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Operating Systems</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Linux</li>
+              <li class="skills__list-item btn btn--plain">Windows Server</li>
+            </ul>
+          </div>
+          <div class="skills__group">
+            <h3>Networking and Infrastructure</h3>
+            <ul class="skills__list">
+              <li class="skills__list-item btn btn--plain">Nginx</li>
+              <li class="skills__list-item btn btn--plain">DNS</li>
+              <li class="skills__list-item btn btn--plain">TCP/IP</li>
+              <li class="skills__list-item btn btn--plain">Active Directory</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- Contact -->
@@ -272,16 +281,23 @@
           Feel free to connect with me.
         </p>
 
-        <a href="mailto:YOUR_EMAIL">
-          <span class="btn btn--outline">Email Me</span>
+        <a
+          href="https://github.com/jubz33"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--outline contact__link"
+        >
+          Connect on GitHub
         </a>
+        <!-- Replace this placeholder with a verified email address and mailto link. -->
+        <p class="contact__email"> ahmadzubir33@gmail.com</p>
       </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
       <a href="#top" class="link footer__link">
-        Personal DevOps Portfolio
+        Ahmad Muhammad · DevOps &amp; Cloud Portfolio
       </a>
     </footer>
 
@@ -289,7 +305,9 @@
     <div class="scroll-container">
       <div class="scroll-top">
         <a aria-label="Scroll up" href="#top">
-          <i aria-hidden="true" class="fas fa-arrow-up"></i>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20V4m-7 7 7-7 7 7" />
+          </svg>
         </a>
       </div>
     </div>

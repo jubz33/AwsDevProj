@@ -20,14 +20,14 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Segoe UI", sans-serif;
   line-height: 1.5;
   color: var(--clr-fg);
   background-color: var(--clr-bg);
 }
 
 .light {
-  --clr-bg: #fcfcfc;
+  --clr-bg: #fff;
   --clr-bg-alt: #fff;
   --clr-fg: #555;
   --clr-fg-alt: #444;
@@ -90,6 +90,39 @@ a {
 
 button {
   cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 5px;
+}
+
+.icon {
+  display: block;
+  width: 1.2em;
+  height: 1.2em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--sun,
+.icon--close,
+.dark .icon--moon,
+[aria-expanded="true"] .icon--menu {
+  display: none;
+}
+
+.dark .icon--sun,
+[aria-expanded="true"] .icon--close {
+  display: block;
 }
 
 @media (max-width: 900px) {
@@ -192,6 +225,10 @@ button {
 .btn--icon {
   padding: 0;
   font-size: 1.2rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
 }
 
 .btn--icon:hover,
@@ -201,6 +238,26 @@ button {
 
 .btn--icon:active {
   transform: translateY(-5px);
+}
+
+.btn--theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0.6em 0.8em;
+  border: 1px solid var(--clr-primary);
+  border-radius: 0.4em;
+  color: var(--clr-primary);
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.btn--theme:hover,
+.btn--theme:focus-visible {
+  background-color: var(--clr-primary);
+  color: var(--clr-bg);
 }
 
 /*========
@@ -228,6 +285,7 @@ main {
 
 .section {
   margin-top: 5em;
+  scroll-margin-top: 2em;
 }
 
 .section__title {
@@ -247,12 +305,12 @@ main {
 
 .nav__hamburger {
   display: none;
-  width: 1em;
 }
 
 .about {
   flex-direction: column;
   margin-top: 3em;
+  text-align: center;
 }
 
 .about__name {
@@ -261,11 +319,19 @@ main {
 
 .about__role {
   margin-top: 1.2em;
+  line-height: 1.4;
+}
+
+.about__location {
+  margin-top: 0.8em;
+  font-size: 0.95rem;
 }
 
 .about__desc {
   font-size: 1rem;
   max-width: 600px;
+  line-height: 1.8;
+  text-align: left;
 }
 
 .about__desc,
@@ -285,14 +351,17 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18em), 1fr));
   grid-gap: 2em;
 }
 
 .project {
   padding: 2em;
-  margin: 0 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  background-color: var(--clr-bg-alt);
   box-shadow: var(--shadow);
   transition: transform 0.2s linear;
 }
@@ -303,13 +372,34 @@ main {
 
 .project__description {
   margin-top: 1em;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.project__highlights {
+  list-style-type: disc;
+  padding-left: 1.2em;
+  margin-top: 1em;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.project__highlights li + li {
+  margin-top: 0.4em;
+}
+
+.project__port {
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .project__stack {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1.2em 0;
+  margin-top: auto;
+  padding-top: 1.2em;
 }
 
 .project__stack-item {
@@ -323,10 +413,26 @@ main {
   margin-left: 0.5em;
 }
 
-.skills__list {
-  max-width: 450px;
-  width: 95%;
+.skills__groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5em 2em;
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.skills__group {
+  min-width: 0;
+  text-align: center;
+}
+
+.skills__group h3 {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75em;
+}
+
+.skills__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -334,10 +440,26 @@ main {
 
 .skills__list-item {
   margin: 0.5em;
+  max-width: 100%;
 }
 
 .contact {
   flex-direction: column;
+  text-align: center;
+}
+
+.contact .about__desc {
+  margin-top: 0;
+  text-align: center;
+}
+
+.contact__link {
+  margin-top: 1.8em;
+}
+
+.contact__email {
+  margin-top: 1.2em;
+  font-size: 0.9rem;
 }
 
 .footer {
@@ -363,8 +485,16 @@ main {
 }
 
 @media (max-width: 600px) {
+  .header,
+  main {
+    width: 90%;
+  }
+
   .header {
-    height: 6em;
+    min-height: 6em;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 0.5em;
   }
 
   .section {
@@ -372,34 +502,69 @@ main {
   }
 
   .nav__list {
+    flex-wrap: wrap;
+    margin-right: 0.5em;
+    gap: 0.8em;
+  }
+
+  .nav__list-item {
+    margin-left: 0;
+  }
+
+  .js-enabled .nav__list {
     flex-direction: column;
-    padding: 4em 0;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    padding: 2em 0;
     position: absolute;
     right: 0;
     left: 0;
     top: 5em;
     background-color: var(--clr-bg);
-    width: 0;
-    overflow: hidden;
-    transition: width 0.2s ease-in-out;
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: var(--shadow);
+    transition: opacity 0.2s ease-in-out;
   }
 
-  .display-nav-list {
-    width: 100%;
+  .js-enabled .display-nav-list {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .nav__list-item {
+  .js-enabled .nav__list-item {
     margin: 0.5em 0;
   }
 
-  .nav__hamburger {
-    display: flex;
-    margin-left: 0.8em;
+  .js-enabled .nav__hamburger {
+    display: grid;
+    margin-left: 0.4em;
+  }
+
+  .btn--theme {
+    font-size: 0.85rem;
   }
 
   .about {
     align-items: flex-start;
     margin-top: 2em;
+    text-align: left;
+  }
+
+  .about__role {
+    font-size: 1.5rem;
+  }
+
+  .project {
+    padding: 1.5em;
+  }
+
+  .skills__groups {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .footer {
@@ -409,5 +574,24 @@ main {
 
   .scroll-container {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .project:hover,
+  .btn--plain:hover,
+  .btn--icon:active {
+    transform: none;
   }
 }

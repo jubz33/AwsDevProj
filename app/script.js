@@ -1,63 +1,75 @@
 const body = document.body
+const btnTheme = document.querySelector('#btn-theme')
+const themeLabel = btnTheme.querySelector('.theme__label')
+const btnHamburger = document.querySelector('#btn-navigation')
+const navList = document.querySelector('.nav__list')
+const btnScrollTop = document.querySelector('.scroll-top')
+const mobileViewport = window.matchMedia('(max-width: 600px)')
 
-const btnTheme = document.querySelector('.fa-moon')
-const btnHamburger = document.querySelector('.fa-bars')
-
-const addThemeClass = (bodyClass, btnClass) => {
-  body.classList.add(bodyClass)
-  btnTheme.classList.add(btnClass)
+const setTheme = (theme) => {
+  const dark = theme === 'dark'
+  body.classList.toggle('dark', dark)
+  body.classList.toggle('light', !dark)
+  const nextMode = dark ? 'Light mode' : 'Night mode'
+  themeLabel.textContent = nextMode
+  btnTheme.setAttribute('aria-label', `Switch to ${nextMode.toLowerCase()}`)
 }
 
-const getBodyTheme = localStorage.getItem('portfolio-theme')
-const getBtnTheme = localStorage.getItem('portfolio-btn-theme')
-
-addThemeClass(getBodyTheme, getBtnTheme)
-
-const isDark = () => body.classList.contains('dark')
-
-const setTheme = (bodyClass, btnClass) => {
-
-	body.classList.remove(localStorage.getItem('portfolio-theme'))
-	btnTheme.classList.remove(localStorage.getItem('portfolio-btn-theme'))
-
-  addThemeClass(bodyClass, btnClass)
-
-	localStorage.setItem('portfolio-theme', bodyClass)
-	localStorage.setItem('portfolio-btn-theme', btnClass)
+// Storage can be unavailable in private browsing or local file previews.
+try {
+  setTheme(localStorage.getItem('portfolio-theme'))
+} catch {
+  setTheme('light')
 }
 
-const toggleTheme = () =>
-	isDark() ? setTheme('light', 'fa-moon') : setTheme('dark', 'fa-sun')
+btnTheme.addEventListener('click', () => {
+  const theme = body.classList.contains('dark') ? 'light' : 'dark'
+  setTheme(theme)
+  try {
+    localStorage.setItem('portfolio-theme', theme)
+  } catch {
+    // The theme still works for this visit when preferences cannot be saved.
+  }
+})
 
-btnTheme.addEventListener('click', toggleTheme)
-
-const displayList = () => {
-	const navUl = document.querySelector('.nav__list')
-
-	if (btnHamburger.classList.contains('fa-bars')) {
-		btnHamburger.classList.remove('fa-bars')
-		btnHamburger.classList.add('fa-times')
-		navUl.classList.add('display-nav-list')
-	} else {
-		btnHamburger.classList.remove('fa-times')
-		btnHamburger.classList.add('fa-bars')
-		navUl.classList.remove('display-nav-list')
-	}
+const setNavigation = (open) => {
+  navList.classList.toggle('display-nav-list', open)
+  btnHamburger.setAttribute('aria-expanded', String(open))
+  btnHamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation')
 }
 
-btnHamburger.addEventListener('click', displayList)
+btnHamburger.addEventListener('click', () => {
+  setNavigation(btnHamburger.getAttribute('aria-expanded') !== 'true')
+})
+
+navList.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    setNavigation(false)
+    if (mobileViewport.matches) {
+      const section = document.querySelector(link.getAttribute('href'))
+      section.setAttribute('tabindex', '-1')
+      section.focus({ preventScroll: true })
+    }
+  })
+})
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && btnHamburger.getAttribute('aria-expanded') === 'true') {
+    setNavigation(false)
+    btnHamburger.focus()
+  }
+})
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.nav')) setNavigation(false)
+})
+
+mobileViewport.addEventListener('change', () => setNavigation(false))
+body.classList.add('js-enabled')
 
 const scrollUp = () => {
-	const btnScrollTop = document.querySelector('.scroll-top')
-
-	if (
-		body.scrollTop > 500 ||
-		document.documentElement.scrollTop > 500
-	) {
-		btnScrollTop.style.display = 'block'
-	} else {
-		btnScrollTop.style.display = 'none'
-	}
+  btnScrollTop.style.display = window.scrollY > 500 ? 'block' : 'none'
 }
 
-document.addEventListener('scroll', scrollUp)
+document.addEventListener('scroll', scrollUp, { passive: true })
+scrollUp()
