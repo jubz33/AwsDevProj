@@ -24,3 +24,12 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+        
