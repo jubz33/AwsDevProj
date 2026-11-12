@@ -38,3 +38,7 @@ spec:
             port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
+
+        envFrom:
+        - configMapRef:
+            name: pf-config
