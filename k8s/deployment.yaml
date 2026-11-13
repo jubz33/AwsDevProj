@@ -42,3 +42,10 @@ spec:
         envFrom:
         - configMapRef:
             name: pf-config
+
+        env:
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: pf-secret
+                key: username
